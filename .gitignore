@@ -1,2 +1,4 @@
 node_modules/
 leads.json
+# Local Netlify folder
+.netlify
