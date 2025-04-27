@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background: #FFFFFF;
+    color: #111827;
+}
+/* Location Modal */
+.location-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #1E3A8A;
+    color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+}
+.modal-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 0 20px;
+}
+.modal-content select, .modal-content button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+.modal-content button {
+    background: #FFD700;
+    color: #1E3A8A;
+    cursor: pointer;
+    font-weight: bold;
+}
+/* Card Interface */
+.card-container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+.swiper-container {
+    padding: 20px;
+}
+.card {
+    background: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.card-content {
+    padding: 20px;
+}
+.card-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1E3A8A;
+    margin: 0;
+}
+.card-content p {
+    margin: 5px 0;
+}
+.amenities {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+.amenity-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.amenity-icon:hover {
+    transform: scale(1.2);
+}
+.enquire-btn {
+    background: #FFD700;
+    color: #1E3A8A;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.lead-form {
+    display: none;
+    background: #1E3A8A;
+    color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.lead-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+}
+.lead-form button {
+    background: #FFD700;
+    color: #1E3A8A;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.disclaimer {
+    font-size: 0.8rem;
+    color: #6B7280;
+    margin-top: 10px;
+}
+.swiper-button-next, .swiper-button-prev {
+    color: #FFD700;
+}
+@media (max-width: 768px) {
+    .card img {
+        height: 200px;
+    }
+    .card-content h3 {
+        font-size: 1.5rem;
+    }
+}
