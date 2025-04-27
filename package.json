@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mongodb": "^6.16.0",
     "netlify-cli": "^20.1.1"
   }
 }
