@@ -1,3 +1,4 @@
+// Sample project data (replace with real data)
 const projects = [
     {
         id: 1,
@@ -25,65 +26,128 @@ const projects = [
     }
 ];
 
-
-function getProjects() {
-    console.log('getProjects called');
-    const location = document.getElementById("locationSelect").value;
-    console.log('Selected location:', location);
-    const modal = document.getElementById("locationModal");
-    const swiperWrapper = document.getElementById("swiperWrapper");
-    modal.style.display = "none";
-}
-
-    // Filter luxury projects (price > ₹2 Cr)
-    const filteredProjects = projects.filter(project => 
-        project.location === location && project.price.includes("Cr")
-    );
-
-    // Render cards
-    swiperWrapper.innerHTML = "";
-    filteredProjects.forEach(project => {
-        const card = document.createElement("div");
-        card.className = "swiper-slide card";
-        card.innerHTML = `
-            <img src="${project.image}" alt="${project.name}">
-            <div class="card-content">
-                <h3>${project.name}</h3>
-                <p><strong>Location:</strong> ${project.location}</p>
-                <p><strong>Price:</strong> ${project.price}</p>
-                <p><strong>Configurations:</strong> ${project.configs}</p>
-                <p><strong>Possession:</strong> ${project.possession}</p>
-                <p><strong>RERA ID:</strong> ${project.rera}</p>
-                <iframe width="100%" height="200" src="${project.video}" frameborder="0" allowfullscreen></iframe>
-                <div class="amenities">
-                    ${project.amenities.map(icon => `<span class="amenity-icon">${icon}</span>`).join("")}
-                </div>
-                <button class="enquire-btn" onclick="toggleForm(${project.id})">Enquire Now</button>
-                <form id="form-${project.id}" class="lead-form" onsubmit="submitLead(event, ${project.id})">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="tel" name="phone" placeholder="Phone Number" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <input type="text" name="budget" placeholder="Budget (e.g., ₹2 Cr)" required>
-                    <input type="text" name="possession" placeholder="Possession Timeline" required>
-                    <button type="submit">Submit</button>
-                </form>
-                <p class="disclaimer">Images for representative purposes only. Project under construction.</p>
-            </div>
-        `;
-        swiperWrapper.appendChild(card);
-    });
-
-    // Re-initialize Swiper
+// Initialize Swiper
 let swiper;
 function initSwiper() {
-    swiper = new Swiper('.swiper-container', {
-        loop: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        effect: 'cards',
-        grabCursor: true
-    });
+    console.log('Initializing Swiper');
+    try {
+        swiper = new Swiper('.swiper-container', {
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'cards',
+            grabCursor: true
+        });
+    } catch (error) {
+        console.error('Swiper initialization failed:', error);
+    }
 }
+
+// Show projects based on location
+function getProjects() {
+    console.log('getProjects called');
+    try {
+        const location = document.getElementById("locationSelect").value;
+        console.log('Selected location:', location);
+        if (!location) {
+            alert('Please select a location.');
+            return;
+        }
+        const modal = document.getElementById("locationModal");
+        const swiperWrapper = document.getElementById("swiperWrapper");
+        modal.style.display = "none";
+
+        // Filter luxury projects (price > ₹2 Cr)
+        const filteredProjects = projects.filter(project => 
+            project.location === location && project.price.includes("Cr")
+        );
+
+        // Render cards
+        swiperWrapper.innerHTML = "";
+        if (filteredProjects.length === 0) {
+            swiperWrapper.innerHTML = '<p>No luxury projects found for this location.</p>';
+            return;
+        }
+        filteredProjects.forEach(project => {
+            const card = document.createElement("div");
+            card.className = "swiper-slide card";
+            card.innerHTML = `
+                <img src="${project.image}" alt="${project.name}">
+                <div class="card-content">
+                    <h3>${project.name}</h3>
+                    <p><strong>Location:</strong> ${project.location}</p>
+                    <p><strong>Price:</strong> ${project.price}</p>
+                    <p><strong>Configurations:</strong> ${project.configs}</p>
+                    <p><strong>Possession:</strong> ${project.possession}</p>
+                    <p><strong>RERA ID:</strong> ${project.rera}</p>
+                    <iframe width="100%" height="200" src="${project.video}" frameborder="0" allowfullscreen></iframe>
+                    <div class="amenities">
+                        ${project.amenities.map(icon => `<span class="amenity-icon">${icon}</span>`).join("")}
+                    </div>
+                    <button class="enquire-btn" onclick="toggleForm(${project.id})">Enquire Now</button>
+                    <form id="form-${project.id}" class="lead-form" onsubmit="submitLead(event, ${project.id})">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="tel" name="phone" placeholder="Phone Number" required>
+                        <input type="email" name="email" placeholder="Email Address" required>
+                        <input type="text" name="budget" placeholder="Budget (e.g., ₹2 Cr)" required>
+                        <input type="text" name="possession" placeholder="Possession Timeline" required>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <p class="disclaimer">Images for representative purposes only. Project under construction.</p>
+                </div>
+            `;
+            swiperWrapper.appendChild(card);
+        });
+
+        // Re-initialize Swiper
+        initSwiper();
+    } catch (error) {
+        console.error('getProjects error:', error);
+        alert('An error occurred while loading projects. Please try again.');
+    }
+}
+
+// Toggle lead form
+function toggleForm(id) {
+    console.log('toggleForm called for id:', id);
+    try {
+        const form = document.getElementById(`form-${id}`);
+        form.style.display = form.style.display === "block" ? "none" : "block";
+    } catch (error) {
+        console.error('toggleForm error:', error);
+    }
+}
+
+// Submit lead to Netlify Function
+async function submitLead(event, id) {
+    console.log('submitLead called for id:', id);
+    event.preventDefault();
+    try {
+        const form = document.getElementById(`form-${id}`);
+        const data = {
+            name: form.querySelector('input[name="name"]').value,
+            phone: form.querySelector('input[name="phone"]').value,
+            email: form.querySelector('input[name="email"]').value,
+            budget: form.querySelector('input[name="budget"]').value,
+            possession: form.querySelector('input[name="possession"]').value,
+            projectId: id
+        };
+        console.log('Submitting lead data:', data);
+        const response = await fetch('/.netlify/functions/submit-lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const result = await response.json();
+        alert('Thank you for your enquiry with Luminos Realty! Our team will contact you soon to discuss your luxury home needs.');
+        form.style.display = 'none';
+    } catch (error) {
+        console.error('submitLead error:', error);
+        alert('Oops! Something went wrong. Please try submitting again or contact us at info@luminosrealty.com.');
+    }
 }
