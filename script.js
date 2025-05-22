@@ -9,7 +9,7 @@ const projects = [
         possession: "Dec 2027",
         rera: "P518000XXXX",
         image: "assets/lodha-acsenza.jpg",
-        video: "https://www.youtube.com/embed/XXXX",
+        video: "https://www.youtube.com/watch?v=_Xipsh9zNDY",
         amenities: ["🏊‍♂️", "🏋️‍♂️", "🌳", "🏠"]
     },
     {
@@ -21,9 +21,57 @@ const projects = [
         possession: "Jun 2026",
         rera: "P518000YYYY",
         image: "assets/trident-juhu.jpg",
-        video: "https://www.youtube.com/embed/YYYY",
+        video: "https://www.youtube.com/shorts/3Dn5SXaeZAs",
         amenities: ["🌅", "🚗", "🏊", "🔒"]
-    }
+    },
+    {
+        id: 3,
+        name: "Lodha Eternis",
+        location: "Andheri East",
+        price: "₹2.06cr",
+        configs: "2 BHK",
+        possession: "Ready To Move In",
+        rera: "P518000YYYY",
+        image: "assets/Lodha Eternis.png",
+        video: "https://www.youtube.com/watch?v=PS_3J3D6lmo",
+        amenities: ["🌅", "🚗", "🏊", "🔒"]
+    },
+    {
+        id: 4,
+        name: "Adani Link Bay",
+        location: "Andheri West",
+        price: "₹3.30cr - 6.50cr",
+        configs: "2 BHK, 3BHK, 4BHK",
+        possession: "Oct 2028",
+        rera: "P518000YYYY",
+        image: "assets/Lodha Eternis.png",
+        video: "https://www.youtube.com/watch?v=PS_3J3D6lmo",
+        amenities: ["🌅", "🚗", "🏊", "🔒"]
+    },
+    {
+        id: 5,
+        name: "Bharat Altavista",
+        location: "Andheri West",
+        price: "₹5.97cr++",
+        configs: "3BHK",
+        possession: "Mar 2027",
+        rera: "P518000YYYY",
+        image: "Bharat Altavistas.png",
+        video: "https://www.youtube.com/watch?v=PS_3J3D6lmo",
+        amenities: ["🌅", "🚗", "🏊", "🔒"]
+    },
+    {
+        id: 6,
+        name: "Kalpatru Amare",
+        location: "Juhu",
+        price: "₹10cr - 30cr",
+        configs: "3/4 BHK And Jodi Options",
+        possession: "Dec 2027",
+        rera: "P518000YYYY",
+        image: "Kalpataru.png",
+        video: "https://www.youtube.com/shorts/3Dn5SXaeZAs",
+        amenities: ["🌅", "🚗", "🏊", "🔒"]
+    }     
 ];
 
 // Initialize Swiper
